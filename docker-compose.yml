@@ -1,0 +1,23 @@
+services:
+  peer:
+    image: p2p-file-sharing:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - PEER_NAME=peer
+    ports:
+      - "8080"
+    volumes:
+      - ./shared:/app/shared
+      - ./downloads:/app/downloads
+    deploy:
+      replicas: 3
+    networks:
+      p2p-net:
+        aliases:
+          - peer
+  
+networks:
+  p2p-net:
+    driver: bridge
