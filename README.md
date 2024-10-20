@@ -59,6 +59,7 @@ p2p-file-sharing/
 2. Build the application:
 
    ```bash
+   go mod tidy
    go build ./cmd/p2pfs
    ```
 
